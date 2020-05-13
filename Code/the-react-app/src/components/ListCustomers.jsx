@@ -43,6 +43,24 @@ class ListCustomers extends Component {
         }  
     }
 
+    delete = (evt, custId) => {
+
+        evt.preventDefault();
+
+
+        //state is immutable
+        //copy of state(data)
+        const updatedData = [...this.state.data];
+        const index = updatedData.findIndex(item => item.id === custId);
+        updatedData.splice(index, 1);
+
+        this.setState({
+            data: updatedData
+        });
+
+
+    }
+
      render(){
          return (
              <div>
@@ -54,9 +72,13 @@ class ListCustomers extends Component {
                                     <p>ID: {item.id}</p>
                                     <p>Name: {item.name}</p>
                                     <p>Location: {item.location}</p>
+                                    <div>
+                                        {/* <button onClick={(e) => { this.delete(e, item.id)}}>Delete</button> */}
+                                        <a href="#" onClick={(e) => { this.delete(e, item.id)}}>Delete</a>
+
+                                    </div>
                                 </div>   
                             );
-
                      })}
                  </div>
              </div>
