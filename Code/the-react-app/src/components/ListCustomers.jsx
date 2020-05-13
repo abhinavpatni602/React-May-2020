@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import Axios from 'axios';
 import './ListCustomers.css';
+import CustomerForm from './CustomerForm';
 
 class ListCustomers extends Component {
 
     state = {
-        data: []
+        data: [],
+        addMode: false
     }
 
     constructor(props){
@@ -43,6 +45,19 @@ class ListCustomers extends Component {
         }  
     }
 
+    add = (nCustomer) => {
+
+        const data = [...this.state.data];
+        data.push(nCustomer);
+
+        this.setState({
+            data
+        });
+
+    }
+
+
+
     delete = (evt, custId) => {
 
         evt.preventDefault();
@@ -61,6 +76,15 @@ class ListCustomers extends Component {
 
     addNew = (evt) => {
         evt.preventDefault();
+        this.setState({
+            addMode: true
+        });
+    }
+
+    cancelAddNew = () => {
+        this.setState({
+            addMode: false
+        });
     }
 
      render(){
@@ -72,7 +96,7 @@ class ListCustomers extends Component {
                  </p>   
 
                  <div>
-                     
+                     { this.state.addMode ? <CustomerForm onSave={this.add} onCancel={this.cancelAddNew}/> : null}
                  </div>
 
                  <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center'}}>
