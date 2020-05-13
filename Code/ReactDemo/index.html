@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.js"></script>
+</head>
+<body>
+    <h2>React Demo</h2>
+
+    <div id="app1"></div>
+    <div id="app2"></div>
+    <div id="app3"></div>
+    <div id="app4"></div>
+
+    <script type="text/babel">
+
+        const element1 = React.createElement("div", null, "This is a React Element");
+        ReactDOM.render(element1, document.getElementById("app1"));
+
+        const element2 = React.createElement("div", null, 
+                            React.createElement("p", null, "This is a nested React Element"));
+        ReactDOM.render(element2, document.getElementById("app2"));
+
+
+        //JSX  => JSX --> Complier(babel) --> JS
+        ReactDOM.render(<div>This is a JSX</div>, document.getElementById("app3"));
+
+        //Components --> reuseable
+        const MyComponent = function(){
+            //return JSX
+            return <h4>This is a React Component</h4>;
+        }
+
+        ReactDOM.render(<MyComponent/>, document.getElementById("app4"));
+
+
+
+    </script>
+
+</body>
+</html>
