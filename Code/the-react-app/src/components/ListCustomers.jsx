@@ -47,7 +47,6 @@ class ListCustomers extends Component {
 
         evt.preventDefault();
 
-
         //state is immutable
         //copy of state(data)
         const updatedData = [...this.state.data];
@@ -58,13 +57,24 @@ class ListCustomers extends Component {
             data: updatedData
         });
 
+    }
 
+    addNew = (evt) => {
+        evt.preventDefault();
     }
 
      render(){
          return (
              <div>
                  <h2>Customers</h2>
+                 <p>
+                    <a href="#" onClick={this.addNew}>Add New</a>
+                 </p>   
+
+                 <div>
+                     
+                 </div>
+
                  <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center'}}>
                      {this.state.data.map((item, index) => {
                             return (
