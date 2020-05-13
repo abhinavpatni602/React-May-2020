@@ -23,7 +23,7 @@ class Counter extends Component{
         const updatedCount = this.state.count + 1;
         //async
         this.setState({
-            count: updatedCount
+            count:   updatedCount
         }, () => {
             console.log(this.state);
         });
@@ -43,15 +43,23 @@ class Counter extends Component{
 
     change = (evt) => {
 
+        //evt.persist();
         const value = evt.target.value;
         this.setState({
-            count: value
+            count: value ? parseInt(value) : 0
         });
     }
     changeMessage = (evt) => {
         const value = evt.target.value;
         this.setState({
             message: value
+        });
+    }
+
+    update = () => {
+
+        this.setState({
+            count: this.inputRef.value ? parseInt(this.inputRef.value): 0
         });
     }
 
@@ -67,8 +75,14 @@ class Counter extends Component{
                 </div>
                 <div>
                     {/* Controlled Input */}
-                    Count: <input type="number" value={this.state.count} onChange={this.change}/>
+                    Count: <input type="number" 
+                        value={this.state.count} onChange={this.change} />
                     {/* Message: <input type="text" value={this.state.message} onChange={this.changeMessage}/> */}
+                </div>
+                <div>
+                    {/* Uncontrolled Input */}
+                    Count: <input type="number" ref={(r) => {this.inputRef = r}}/> &nbsp;
+                    <button onClick={this.update}>Update</button>
                 </div>
             </div>
         )

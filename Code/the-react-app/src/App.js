@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Hello from './components/Hello';
 import Counter from './components/Counter';
+import ListCustomers from './components/ListCustomers';
 
 function App() {
   return (
@@ -23,8 +24,10 @@ function App() {
       </header>
       <section>
         
-          <Counter/>
-          <Counter title="The Counter"/>
+        <ListCustomers/>
+
+          {/* <Counter/>
+          <Counter title="The Counter"/> */}
 
            {/* <Hello message="React" />
           <Hello message="JSX"/>
