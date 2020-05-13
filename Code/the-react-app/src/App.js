@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Hello from './components/Hello';
+import Counter from './components/Counter';
 
 function App() {
   return (
@@ -8,7 +10,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Edit  <code>src/App.js</code> and save to reload.
         </p>
         <a
           className="App-link"
@@ -19,6 +21,18 @@ function App() {
           Learn React
         </a>
       </header>
+      <section>
+        
+          <Counter/>
+          <Counter title="The Counter"/>
+
+           {/* <Hello message="React" />
+          <Hello message="JSX"/>
+          <Hello message="App">
+             Hello World React!!
+          </Hello> */}
+
+      </section>
     </div>
   );
 }
