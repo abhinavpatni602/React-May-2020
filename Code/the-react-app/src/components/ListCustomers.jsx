@@ -87,6 +87,8 @@ class ListCustomers extends Component {
         });
     }
 
+    
+
      render(){
          return (
              <div>
@@ -94,7 +96,7 @@ class ListCustomers extends Component {
                  <p>
                     <a href="#" onClick={this.addNew}>Add New</a>
                  </p>   
-
+                   
                  <div>
                      { this.state.addMode ? <CustomerForm onSave={this.add} onCancel={this.cancelAddNew}/> : null}
                  </div>

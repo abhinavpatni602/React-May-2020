@@ -12,6 +12,7 @@ class CustomerForm extends Component {
         this.initState = {...this.state};
     }
 
+    
     change = (evt)=> {
         const value = evt.target.value;
         const name = evt.target.name;
