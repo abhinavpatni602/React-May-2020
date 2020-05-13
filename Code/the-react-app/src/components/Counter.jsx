@@ -68,7 +68,7 @@ class Counter extends Component{
         return (
             <div>
                 <h3>{this.props.title ? this.props.title : "Counter"}</h3>
-                <p>Count111: {this.state.count}</p>
+                <p>Count: {this.state.count}</p>
                 <div>
                     <button onClick={this.inc}>Increment</button>&nbsp;
                     <button onClick={this.decr}>Decrement</button>
