@@ -10,6 +10,11 @@ class CustomerForm extends Component {
         super(props);
 
         this.initState = {...this.state};
+
+        if(this.props.data){
+            this.state.customer = this.props.data;
+        }
+        
     }
 
     

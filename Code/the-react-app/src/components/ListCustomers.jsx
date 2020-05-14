@@ -1,48 +1,49 @@
-import React, {Component} from 'react';
+import React, { Component, PureComponent } from 'react';
 import Axios from 'axios';
 import './ListCustomers.css';
 import CustomerForm from './CustomerForm';
 
-class ListCustomers extends Component {
+class ListCustomers extends PureComponent {
 
     state = {
         data: [],
-        addMode: false
+        addMode: false,
+        selectedCustomer: null
     }
 
-    constructor(props){
-        
+    constructor(props) {
+
         super(props);
         this.url = "https://calm-beach-18228.herokuapp.com/customers";
-
+        console.log("[ListCustomers constructor]")
     }
     //loaded
-    async componentDidMount(){
-
+    async componentDidMount() {
+        console.log("[ListCustomers componentDidMount]")
         try {
-            
+
             const resp = await fetch(this.url);
             const data = await resp.json();
             console.log(data);
             this.setState({
-                data:data
+                data: data
             })
 
         } catch (error) {
             console.log("Error", error)
         }
-        
 
-        try {
-            const resp = await Axios.get(this.url);
-            console.log(resp);
-            this.setState({
-                data: resp.data
-            })
 
-        } catch (error) {
-            console.log("Error", error)
-        }  
+        // try {
+        //     const resp = await Axios.get(this.url);
+        //     console.log(resp);
+        //     this.setState({
+        //         data: resp.data
+        //     })
+
+        // } catch (error) {
+        //     console.log("Error", error)
+        // }
     }
 
     add = (nCustomer) => {
@@ -86,40 +87,76 @@ class ListCustomers extends Component {
             addMode: false
         });
     }
+    edit = (e, customer) => {
 
-    
+        e.preventDefault();
+        this.setState({
+            selectedCustomer: customer
+        });
 
-     render(){
-         return (
-             <div>
-                 <h2>Customers</h2>
-                 <p>
+        //this.conetnts = (<CustomerForm/>)
+
+    }
+
+
+
+    render() {
+
+        console.log("[ListCustomers render]")
+        return (
+            <div>
+                <h2>Customers</h2>
+                <p>
                     <a href="#" onClick={this.addNew}>Add New</a>
-                 </p>   
-                   
-                 <div>
-                     { this.state.addMode ? <CustomerForm onSave={this.add} onCancel={this.cancelAddNew}/> : null}
-                 </div>
+                </p>
 
-                 <div style={{display: 'flex', flexFlow: 'row wrap', justifyContent: 'center'}}>
-                     {this.state.data.map((item, index) => {
-                            return (
-                                <div className="customer" key={item.id}>
-                                    <p>ID: {item.id}</p>
-                                    <p>Name: {item.name}</p>
-                                    <p>Location: {item.location}</p>
-                                    <div>
-                                        {/* <button onClick={(e) => { this.delete(e, item.id)}}>Delete</button> */}
-                                        <a href="#" onClick={(e) => { this.delete(e, item.id)}}>Delete</a>
+                <div>
+                    {this.state.addMode ? <CustomerForm onSave={this.add} onCancel={this.cancelAddNew} /> : null}
+                </div>
 
-                                    </div>
-                                </div>   
-                            );
-                     })}
-                 </div>
-             </div>
-         );
-     }
+                <div style={{ display: 'flex', flexFlow: 'row wrap', justifyContent: 'center' }}>
+                    {this.state.data.map((item, index) => {
+                        return (
+                            <div className="customer" key={item.id}>
+                                <p>ID: {item.id}</p>
+                                <p>Name: {item.name}</p>
+                                <p>Location: {item.location}</p>
+                                <div>
+                                    {/* <button onClick={(e) => { this.delete(e, item.id)}}>Delete</button> */}
+                                    <a href="#" onClick={(e) => { this.delete(e, item.id) }}>Delete</a> &nbsp;
+                                        <a href="#" onClick={(e) => { this.edit(e, item) }}>Edit</a>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+
+                <div>
+
+                    {this.state.selectedCustomer !== null ?
+                        <CustomerForm data={this.state.selectedCustomer} /> : null}
+                </div>
+            </div>
+        );
+    }
+
+    componentWillMount() {
+        console.log("[ListCustomers componentWillMount]")
+    }
+    componentWillReceiveProps() {
+        console.log("[ListCustomers componentWillReceiveProps]")
+    }
+    // shouldComponentUpdate(nProps, nState) {
+    //     console.log("[ListCustomers shouldComponentUpdate]");
+    //     return true;
+    // }
+    componentWillUpdate() {
+        console.log("[ListCustomers componentWillUpdate]")
+    }
+    componentDidUpdate() {
+        console.log("[ListCustomers componentDidUpdate]")
+    }
+
 
 }
 

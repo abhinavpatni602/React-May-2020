@@ -5,7 +5,13 @@ import Hello from './components/Hello';
 import Counter from './components/Counter';
 import ListCustomers from './components/ListCustomers';
 
+
+
+
+
 function App() {
+
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -24,6 +30,8 @@ function App() {
       </header>
       <section>
         
+       
+      
         <ListCustomers/>
 
           {/* <Counter/>
