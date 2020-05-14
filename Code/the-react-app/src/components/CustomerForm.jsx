@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router-dom';
 
 class CustomerForm extends Component {
 
@@ -14,6 +15,7 @@ class CustomerForm extends Component {
         if(this.props.data){
             this.state.customer = this.props.data;
         }
+        console.log("[CustomerForm constructor]", this.props)
         
     }
 
@@ -91,4 +93,5 @@ class CustomerForm extends Component {
 
 }
 
-export default CustomerForm;
+export default withRouter(CustomerForm);
+//export default CustomerForm;

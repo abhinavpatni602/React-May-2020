@@ -18,7 +18,7 @@ class ListCustomers extends PureComponent {
         super(props);
         //this.url = "https://calm-beach-18228.herokuapp.com/customers";
         this.url = "http://localhost:9000/customers";
-        console.log("[ListCustomers constructor]")
+        console.log("[ListCustomers constructor]", props)
     }
     //loaded
     async componentDidMount() {
