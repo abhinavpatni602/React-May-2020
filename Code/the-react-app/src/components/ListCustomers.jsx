@@ -10,6 +10,7 @@ class ListCustomers extends PureComponent {
         addMode: false,
         selectedCustomer: null
     }
+    //count = 0;
 
     constructor(props) {
 

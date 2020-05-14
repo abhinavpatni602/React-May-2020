@@ -4,6 +4,9 @@ import './App.css';
 import Hello from './components/Hello';
 import Counter from './components/Counter';
 import ListCustomers from './components/ListCustomers';
+import Search from './components/hooks/Search';
+import UseCallbackDemo from './components/hooks/UseCallbackDemo';
+import UseMemoDemo from './components/hooks/UseMemoDemo';
 
 
 
@@ -31,8 +34,11 @@ function App() {
       <section>
         
        
-      
-        <ListCustomers/>
+       <UseMemoDemo/>
+       {/* <UseCallbackDemo/> */}
+
+        {/* <Search/> */}
+        {/* <ListCustomers/> */}
 
           {/* <Counter/>
           <Counter title="The Counter"/> */}
