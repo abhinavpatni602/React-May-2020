@@ -2,6 +2,7 @@ import React, { Component, PureComponent } from 'react';
 import Axios from 'axios';
 import './ListCustomers.css';
 import CustomerForm from './CustomerForm';
+import { Link } from 'react-router-dom';
 
 class ListCustomers extends PureComponent {
 
@@ -132,7 +133,8 @@ class ListCustomers extends PureComponent {
                                 <div>
                                     {/* <button onClick={(e) => { this.delete(e, item.id)}}>Delete</button> */}
                                     <a href="#" onClick={(e) => { this.delete(e, item.id) }}>Delete</a> &nbsp;
-                                        <a href="#" onClick={(e) => { this.edit(e, item) }}>Edit</a>
+                                    <a href="#" onClick={(e) => { this.edit(e, item) }}>Edit</a> &nbsp;
+                                    <Link to={"/customers/" + item.id}>Details</Link>
                                 </div>
                             </div>
                         );

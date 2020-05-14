@@ -1,4 +1,5 @@
 import React from 'react';
+import withBorder from './hoc/withBorder';
 
 function hello(props){
 
@@ -14,4 +15,4 @@ function hello(props){
     )
 }
 
-export default hello;
+export default withBorder(hello);

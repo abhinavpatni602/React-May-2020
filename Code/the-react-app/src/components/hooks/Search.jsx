@@ -1,5 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useImperativeHandle} from 'react';
 import Axios from 'axios';
+import withBorder from '../hoc/withBorder';
 
 // function Search(){
 
@@ -15,7 +16,7 @@ import Axios from 'axios';
 // const setText = arr[1];
 
 
-const Search  = (props) => {
+const Search  = React.forwardRef((props, ref) => {
 
 
     const searchCount = useRef(0); 
@@ -42,7 +43,14 @@ const Search  = (props) => {
         console.log("in the effect for results change");
     }, [results])
 
-
+    useImperativeHandle(ref, () => {
+        return {
+            name: "Search Component",
+            searchText: function(){
+                return text;
+            }
+        }
+    })
 
 
     let searchRef = null;
@@ -104,6 +112,6 @@ const Search  = (props) => {
             </div>
         </div>
     )
-}
+})
 
-export default Search;
+export default withBorder(Search);
