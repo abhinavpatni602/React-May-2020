@@ -14,7 +14,8 @@ class ListCustomers extends PureComponent {
     constructor(props) {
 
         super(props);
-        this.url = "https://calm-beach-18228.herokuapp.com/customers";
+        //this.url = "https://calm-beach-18228.herokuapp.com/customers";
+        this.url = "http://localhost:9000/customers";
         console.log("[ListCustomers constructor]")
     }
     //loaded
@@ -46,15 +47,21 @@ class ListCustomers extends PureComponent {
         // }
     }
 
-    add = (nCustomer) => {
+    add = async (nCustomer) => {
 
-        const data = [...this.state.data];
-        data.push(nCustomer);
+        try {
 
-        this.setState({
-            data
-        });
+            await Axios.post(this.url, nCustomer);
+            alert("Saved...");
+            const data = [...this.state.data];
+            data.push(nCustomer);
+            this.setState({
+                data
+            });
 
+        } catch (error) {
+            console.log("error saving", error)
+        }
     }
 
 
@@ -134,7 +141,9 @@ class ListCustomers extends PureComponent {
                 <div>
 
                     {this.state.selectedCustomer !== null ?
-                        <CustomerForm data={this.state.selectedCustomer} /> : null}
+                        <CustomerForm
+                            key={this.state.selectedCustomer.id}
+                            data={this.state.selectedCustomer} /> : null}
                 </div>
             </div>
         );

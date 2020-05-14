@@ -17,6 +17,20 @@ class CustomerForm extends Component {
         
     }
 
+    // static getDerivedStateFromProps(nextProps, currentState){
+
+    //     //return the new derived states
+    //     if(nextProps.data.id !== currentState.customer.id){
+    //        return {
+    //            ...currentState,
+    //            customer: nextProps.data
+    //        }
+    //     }
+    //     else{
+    //         return null;
+    //     }
+    // }
+
     
     change = (evt)=> {
         const value = evt.target.value;
