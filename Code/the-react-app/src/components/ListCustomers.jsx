@@ -106,6 +106,13 @@ class ListCustomers extends PureComponent {
         //this.conetnts = (<CustomerForm/>)
 
     }
+    editUpdate =  (customer) => {}
+
+    cancelUpdate = () => {
+        this.setState({
+            selectedCustomer: null
+        })
+    }
 
 
 
@@ -146,7 +153,9 @@ class ListCustomers extends PureComponent {
                     {this.state.selectedCustomer !== null ?
                         <CustomerForm
                             key={this.state.selectedCustomer.id}
-                            data={this.state.selectedCustomer} /> : null}
+                            data={this.state.selectedCustomer}
+                            onSave={this.editUpdate}
+                            onCancel={this.cancelUpdate} /> : null}
                 </div>
             </div>
         );

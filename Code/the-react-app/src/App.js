@@ -10,6 +10,7 @@ import UseMemoDemo from './components/hooks/UseMemoDemo';
 import DebounceSearch from './components/hooks/DebounceSearch';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import CustomerDetails from './components/CustomerDetails';
+import ReduxCounter from './components/ReduxCounter';
 
 function App() {
 
@@ -56,6 +57,9 @@ function App() {
                   <li>
                     <Link to="/memo">Memo Hooks</Link>
                   </li>
+                  <li>
+                    <Link to="/redux">Redux</Link>
+                  </li>
                 </ul>
               </nav>
 
@@ -69,6 +73,7 @@ function App() {
             <Route path="/search" component={Search}/>
             <Route path="/callback" component={UseCallbackDemo}/>
             <Route path="/memo" component={UseMemoDemo}/>
+            <Route path="/redux" component={ReduxCounter}/>
 
           </section>
 
