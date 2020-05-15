@@ -11,6 +11,7 @@ import DebounceSearch from './components/hooks/DebounceSearch';
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import CustomerDetails from './components/CustomerDetails';
 import ReduxCounter from './components/ReduxCounter';
+import { AppContext } from './context/AppContext';
 
 function App() {
 
@@ -18,25 +19,26 @@ function App() {
 
   return (
 
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit  <code>src/App.js</code> and save to reload.
+    <AppContext.Provider value={{appName: "React Training", author: "Anil Joseph"}}>
+      <Router>
+        <div className="App">
+          <header className="App-header">
+            <img src={logo} className="App-logo" alt="logo" />
+            <p>
+              Edit  <code>src/App.js</code> and save to reload.
         </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
+            <a
+              className="App-link"
+              href="https://reactjs.org"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Learn React
         </a>
-        </header>
-        <section>
-
+          </header>
           <section>
+
+            <section>
               <nav>
                 <ul>
                   <li>
@@ -63,23 +65,24 @@ function App() {
                 </ul>
               </nav>
 
-          </section>
-          
-          <section>
-            <Route path="/" exact render={() => <Hello message="React"/>}/>
-            <Route path="/counter" render={() => <Counter title="React Counter"/>}/>
-            <Route path="/customers" exact  component={ListCustomers}/>
-            <Route path="/customers/:id" component={CustomerDetails}/>
-            <Route path="/search" component={Search}/>
-            <Route path="/callback" component={UseCallbackDemo}/>
-            <Route path="/memo" component={UseMemoDemo}/>
-            <Route path="/redux" component={ReduxCounter}/>
+            </section>
+
+            <section>
+              <Route path="/" exact render={() => <Hello message="React" />} />
+              <Route path="/counter" render={() => <Counter title="React Counter" />} />
+              <Route path="/customers" exact component={ListCustomers} />
+              <Route path="/customers/:id" component={CustomerDetails} />
+              <Route path="/search" component={Search} />
+              <Route path="/callback" component={UseCallbackDemo} />
+              <Route path="/memo" component={UseMemoDemo} />
+              <Route path="/redux" component={ReduxCounter} />
+
+            </section>
 
           </section>
-
-        </section>
-      </div>
-    </Router>
+        </div>
+      </Router>
+    </AppContext.Provider>
   );
 }
 

@@ -32,7 +32,7 @@ class ReduxCounter extends Component {
      }
 
 }
-// var hoc = connect(mapStateToProps);
+// var hoc = connect(mapStateToProps, mapDispatchToProps);
 // var ConnectedComponent = hoc(ReduxCounter);
 // export default ConnectedComponent;
 

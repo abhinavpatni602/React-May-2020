@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {AppContext} from '../context/AppContext';
+
 
 class Counter extends Component{
 
@@ -68,6 +70,12 @@ class Counter extends Component{
         return (
             <div>
                 <h3>{this.props.title ? this.props.title : "Counter"}</h3>
+
+                <h4>
+                    <p>AppName: {this.context.appName}</p>
+                    <p>Author: {this.context.author}</p>
+                </h4>
+
                 <p>Count: {this.state.count}</p>
                 <div>
                     <button onClick={this.inc}>Increment</button>&nbsp;
@@ -88,5 +96,7 @@ class Counter extends Component{
         )
     }
 }
+
+Counter.contextType = AppContext;
 
 export default Counter;
